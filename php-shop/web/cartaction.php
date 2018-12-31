@@ -1,9 +1,11 @@
 <?php session_start(); 
 if(!$_SESSION['adminuser']){
+  echo '<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>';
   echo "<script language=\"JavaScript\">\r\n"; 
-  echo " alert(\"先登录！\");\r\n"; 
+  echo " alert(\"先登录！再加入购物车!\");\r\n"; 
   echo " history.back();\r\n"; 
   echo "</script>";
+  return ;
 }
 ?>
 <!doctype html>
@@ -18,12 +20,13 @@ if(!$_SESSION['adminuser']){
         //购物车信息处理页
         //根据参数a的值执行对应的操作
         switch($_GET['a']){
-            case "add": //添加购物车信息
+            case "add": //添加购物车信息  
+
                 //获取要购买的商品（在真实的网站中是从数据库中获取要购买的信息）
                 $id = $_GET['id']+0;
                 // var_dump($id);
                 //1.导入配置文件
-                require("../public/config.php");
+               require("../public/config.php");
                require("../public/Model.class.php");
                $mod = new Model("goods");
                $shop = $mod->find($id);
@@ -43,7 +46,7 @@ if(!$_SESSION['adminuser']){
                 //默认购买量为1
                 // var_dump($shop);die();
                 $_SESSION["shoplist"][$id]=$shop;
-                    $_SESSION["shoplist"][$id]['num']=1;
+                $_SESSION["shoplist"][$id]['num']=1;
 
                 }else{
                    //购买量加1

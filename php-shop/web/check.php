@@ -169,7 +169,9 @@
 
 			<div class="address-info">
 
-			<a href="#" class="J_Modify modify J_MakePoint" data-point-url="http://log.mmstat.com/buy.1.21">修改本地址</a>
+			<!-- <a href="#" class="J_Modify modify J_MakePoint" data-point-url="http://log.mmstat.com/buy.1.21">修改本地址</a> -->
+			
+			<!--跳转到cartaction.php 去处理订单（插入订单到数据库）-->
 			<form action="cartaction.php?a=insert" method="post">
 			<!-- 收货人信息 -->
 			
@@ -194,9 +196,11 @@
 			<!-- 收货人信息结束-->
 
 			<!-- 商品栏样式开始 -->
-			<em class="tip" style="display: none">默认地址</em>
-			<a class="J_DefaultHandle set-default J_MakePoint" href="http://www.17sucai.com/auction/update_address_selected_status.htm?addrid=674944241" style="display: none" data-point-url="http://log.mmstat.com/buy.1.18">设置为默认收货地址</a>
+			<!-- <em class="tip" style="display: none">默认地址</em>
+			<a class="J_DefaultHandle set-default J_MakePoint" href="#" style="display: none" data-point-url="#">设置为默认收货地址</a> -->
 			</div>
+
+
 			</li>
 			<li class="J_Addr J_MakePoint clearfix" data-point-url="http://log.mmstat.com/buy.1.20">
 			<s class="J_Marker marker"></s>
@@ -235,8 +239,8 @@
 			<tr class="first"><td colspan="5"></td></tr>
 			<tr class="shop blue-line">
 			<td colspan="3">
-			店铺：<a class="J_ShopName J_MakePoint" data-point-url="http://log.mmstat.com/buy.1.6" href="http://store.taobao.com/shop/view_shop.htm?shop_id=104337282" target="_blank" title="淘米魅">雅妆商城</a>
-			<span class="seller">卖家：<a href="http://member1.taobao.com/member/user_profile.jhtml?user_id=ac5831c32f47bc9267fcb75b71b5eed6" target="_blank" class="J_MakePoint" data-point-url="http://log.mmstat.com/buy.1.15">雅妆商城</a></span>
+			店铺：<a class="J_ShopName J_MakePoint" data-point-url="http://log.mmstat.com/buy.1.6" href="http://store.taobao.com/shop/view_shop.htm?shop_id=104337282" target="_blank" title="淘米魅">莞妆商城</a>
+			<span class="seller">卖家：<a href="http://member1.taobao.com/member/user_profile.jhtml?user_id=ac5831c32f47bc9267fcb75b71b5eed6" target="_blank" class="J_MakePoint" data-point-url="http://log.mmstat.com/buy.1.15">莞妆商城</a></span>
 			<span class="J_WangWang" data-nick="淘米魅" data-display="inline"></span>  
 		    </td>
 			<!-- 商品栏样式结束 -->

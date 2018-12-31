@@ -195,7 +195,10 @@
       <label>件（库存8件）</label>
                    <div class="clear"></div>
                  </form> -->
-                 <div class="anniu"><a href="cartaction.php?a=add&id=<?php echo $goods['0']['id']?>"><img src="include/images/right_img_14.jpg" /></a>
+                 <div class="anniu">
+
+                  <a href="cartaction.php?a=add&id=<?php echo $goods['0']['id']?>"><img src="include/images/right_img_14.jpg" /></a>
+
                  <a href="show.php" class="goumai"><img src="include/images/right_img_16.jpg" /></a>
                  <?php 
                     $total=0; //总计金额

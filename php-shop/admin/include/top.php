@@ -26,7 +26,7 @@
 	</head>
 	<body>
 		<span class="header">
-			<div class="font">雅妆后台管理系统</div>
+			<div class="font">莞妆后台管理系统</div>
 		</span>
 	</body>
 </html>

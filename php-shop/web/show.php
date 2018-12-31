@@ -17,6 +17,7 @@ if(!$_SESSION['adminuser']){
 		<link rel="stylesheet" href="./include/css/personal/safe/ms-style.min.css" />
 		<link rel="stylesheet" href="./include/css/personal/safe/personal_member.min.css" />
 		<link rel="stylesheet" href="./include/css/personal/safe/Snaddress.min.css" />
+		<script src="http://static.zuidaima.com/resource/js/jquery.min.js"></script>
 		<style>
 			progress {
 				width: 300px;
@@ -177,10 +178,11 @@ if(!$_SESSION['adminuser']){
 			$total=0; //总计金额
 			// var_dump($_SESSION['shoplist']);die();
             if(!empty($_SESSION['shoplist'])){ 
+
             foreach($_SESSION['shoplist'] as $shop){
             	// var_dump($shop);die();
 					  echo "<div style='border:1px solid #ccc;height: 150px;margin-top: 20px;'>";
-					  echo "<input  type='checkbox'  style='margin-top: 20px;margin-left: 20px;'>";
+					  echo "<input  type='checkbox' class ='price' value = 'number".$shop['id']."'  style='margin-top: 20px;margin-left: 20px;'>";
 					  echo "<div>";
 					  // 图片
 					  echo "<img src=\"../public/uploads/s_{$shop['picname']}\" style='margin-left:60px; float: left;' />";
@@ -205,7 +207,7 @@ if(!$_SESSION['adminuser']){
 					  echo "<input type='text' name='num' value='{$shop['num']}' style='color:#333333;height:30px;width:30px;text-align:center;'></input>";
 					  echo "<a href=\"cartaction.php?a=add&id={$shop['id']}\"><input type='button' value='+' style='color:#333333;height:30px;width:20px;border-style:solid;'></a>";
 					  echo "</span>";
-					  echo "<span style='margin-left:10px;float: left;'>";
+					  echo "<span style='margin-left:10px;float: left;' id= 'number".$shop['id']."'>";
                       echo "<font style='font-size: 16px;color: #FD3C0D;margin-left: 85px;font-weight: bold;'>".($shop['num']*$shop['price'])."</font>";
 					  echo "</span>";
 					  echo "<span style='margin-left:85px; float: left;'><font style='font-size: 14px;color: #1E1E1E;'></font>";
@@ -213,7 +215,8 @@ if(!$_SESSION['adminuser']){
 					  echo "</span>";
 					  echo "</div>";
 					  echo "</div>";
-					  $total +=$shop['num']*$shop['price'];
+
+					  //$total +=$shop['num']*$shop['price'];
 					  // var_dump($shop);
 
 						}
@@ -240,8 +243,76 @@ if(!$_SESSION['adminuser']){
 							<th  style="line-height:50px; " ><span style="font-size: 12px;margin-left:80px;color: #949494; ">合计(不含运费):</span>
 								</th>
 								<th  style="line-height:50px; " >
-								<span style="font-size: 18px;color:#FD3C0D;">￥<?php echo $total;?></span></th>
-                            <th  style="line-height:50px; " ><font style="font-size: 20px;margin-left:43px;color: #949494; "><a href="check.php">提交订单</a></font></th>
+								<span style="font-size: 18px;color:#FD3C0D;" id = 'total_price'>0</span></th>
+								
+								<!--动态加载购物车商品-->
+								<script>
+									$(function() {
+										$(".price").click(
+											function() {
+												console.log("点击");
+												var total_price=parseInt($("#total_price").text());
+												var checkbox=$(this).val();
+												var price_obj=$("#"+checkbox);
+												var price=parseInt(price_obj.text());
+												if($(this).is(':checked')){
+													total_price+=price;
+												}else{
+													total_price-=price;
+												}
+												$("#total_price").text(total_price);
+											}
+										);
+										$(".price").each(function(){
+											$(this).attr("checked",false);
+										});
+/*
+							//<!--将选中的商品，存入一个新的session中，在结算页面用新的session里面的商品进行结算-->
+
+										 $("#sub").click(function(){
+								            //$('input:checkbox:checked') 等同于 $('input[type=checkbox]:checked')
+								            //意思是选择被选中的checkbox
+								            var cid = new Array();
+								            var checkbox;
+								            var i = 0;
+								            $.each($('input:checkbox:checked'),function(){
+								                checkbox = $(this).val();
+								                cid[i] = checkbox.substring(6);
+								                i++;
+								            });
+
+								            var stm =JSON.stringify(cid);
+								            console.log(stm);
+
+								            HttpSession session=request.getSession()；
+											session.setAttribute("cid",stm)； 
+
+								            <?php
+								            $cid = $_SESSION['cid'];
+
+								             ?>
+								        });*/
+									});
+								</script>
+
+
+                            <?php
+                            $user = $_SESSION['adminuser'];
+                             if ($user['state'] == 2) { 
+					            	echo "<script language=\"JavaScript\">\r\n"; 
+									echo " alert(\"该账号已经被禁用，不能结账！\");\r\n"; 
+									echo " history.back();\r\n"; 
+									echo "</script>";
+					            
+					        }else{
+					        	echo '<th  style="line-height:50px; " >';
+					        	echo '<font style="font-size: 20px;margin-left:43px;color:#949494;" >';
+					        	echo '<button id = "sub"><a href ="check.php">提交订单</a></button></font></th>';
+					        }
+
+                             ?>
+							
+
 						</tr>
 
 					</table>

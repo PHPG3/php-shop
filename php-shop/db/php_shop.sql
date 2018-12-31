@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2018 年 12 月 30 日 00:49
+-- 生成日期: 2018 年 12 月 31 日 15:21
 -- 服务器版本: 5.7.23
 -- PHP 版本: 5.4.45
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `detail` (
   `num` int(10) unsigned DEFAULT NULL,
   `addtime` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=323 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=327 ;
 
 --
 -- 转存表中的数据 `detail`
@@ -52,7 +52,11 @@ INSERT INTO `detail` (`id`, `orderid`, `goodsid`, `name`, `price`, `num`, `addti
 (319, 8, 13, '雅诗兰黛面霜 保湿霜 ', 158.00, 2, 1546097601),
 (320, 8, 8, '兰芝 新水酷特润精华露', 295.00, 2, 1546097601),
 (321, 9, 1, '贝德玛卸妆水', 139.00, 2, 1546100354),
-(322, 9, 3, '凡茜绿豆卸妆水180ml', 39.00, 2, 1546100354);
+(322, 9, 3, '凡茜绿豆卸妆水180ml', 39.00, 2, 1546100354),
+(323, 10, 3, '凡茜绿豆卸妆水180ml', 39.00, 1, 1546164431),
+(324, 11, 2, '姬芮 净颜两用卸妆油 ', 78.00, 1, 1546170895),
+(325, 12, 2, '姬芮 净颜两用卸妆油 ', 78.00, 1, 1546174917),
+(326, 12, 3, '凡茜绿豆卸妆水180ml', 39.00, 1, 1546174917);
 
 -- --------------------------------------------------------
 
@@ -66,7 +70,16 @@ CREATE TABLE IF NOT EXISTS `friendlink` (
   `url` varchar(255) NOT NULL,
   `picname` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- 转存表中的数据 `friendlink`
+--
+
+INSERT INTO `friendlink` (`id`, `name`, `url`, `picname`) VALUES
+(1, '天猫', 'www.tmall.com', NULL),
+(2, '淘宝', 'www.taobao.com', NULL),
+(3, '京东', 'www.jd.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -168,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `total` double(8,2) DEFAULT NULL,
   `status` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- 转存表中的数据 `orders`
@@ -183,7 +196,10 @@ INSERT INTO `orders` (`id`, `uid`, `linkman`, `address`, `code`, `phone`, `addti
 (6, 14, '666', '666', '666', '666', 1546002163, 234.00, 1),
 (7, 14, '666', '666', '666', '666', 1546002998, 417.00, 1),
 (8, 1, 'admin', 'wu', '100086', '12345678901', 1546097601, 906.00, 0),
-(9, 1, 'admin', 'wu', '100086', '12345678901', 1546100354, 356.00, 0);
+(9, 1, 'admin', 'wu', '100086', '12345678901', 1546100354, 356.00, 0),
+(10, 8, 'zzz', '东莞理工23栋', '152828', '13468798521', 1546164431, 39.00, 0),
+(11, 14, '666', '666', '666', '666', 1546170895, 78.00, 0),
+(12, 14, '666', '666', '666', '666', 1546174917, 117.00, 0);
 
 -- --------------------------------------------------------
 

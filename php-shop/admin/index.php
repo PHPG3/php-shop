@@ -2,7 +2,8 @@
 	//开启session
 	session_start();
 	//判断当前访问者是否已经登录
-	if(empty($_SESSION['adminuser'])){
+	//前后台分离，后台session名称为admin,前台的为adminuser
+	if(empty($_SESSION['admin'])){
 		header("Location:login.php");
 		exit();//终止程序运行
 	}
@@ -25,7 +26,7 @@
 				<div class="public-header-fun fr">
 					<?php
        if(!empty($_SESSION['adminuser'])){
-        echo "<li style='position:absolute;top:0px;margin-left:-120px;list-style-type:none;'>你好！".$_SESSION['adminuser']['name']."</li>";
+        echo "<li style='position:absolute;top:0px;margin-left:-120px;list-style-type:none;'>你好！".$_SESSION['admin']['name']."</li>";
        }?>
 		<a href="./login.php" class="public-header-loginout">安全退出</a>	
 				</div>
@@ -99,10 +100,10 @@
 					</div>
 				</li>
 				<li class="public-ifame-item">
-					<a href="javascript:;">会员收货地址</a>
+					<a href="javascript:;">用户收货地址</a>
 					<div class="ifame-item-sub">
 						<ul>
-							<li><a href="#" target="content">信息列表</a>|<a href="#" target="content">添加</a></li>
+							<li><a href="./deliveryAddress/index.php" target="content">修改收货地址</a></li>
 						</ul>
 					</div>
 				</li>
@@ -110,8 +111,7 @@
 					<a href="javascript:;">扩展功能</a>
 					<div class="ifame-item-sub">
 						<ul>
-							<li><a href="#" hhref="" target="content">友情链接</a></li>
-							<li><a href="#" hhref="" target="content">网站公告</a></li>
+							<li><a href="./friendLink/index.php" hhref="" target="content">友情链接</a></li>
 						</ul>
 					</div>
 				</li>

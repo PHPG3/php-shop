@@ -55,7 +55,7 @@ switch($_GET['a']){
 			// var_dump($user);
 			if($result[0]['pass']==$upass){
 				//登录成功 将登录成功的人信息放入session里面
-				$_SESSION['adminuser'] = $result[0];
+				$_SESSION['admin'] = $result[0];
 				header("Location:index.php");
 			}else{
 				header("Location:login.php?eno=3");
@@ -65,7 +65,7 @@ switch($_GET['a']){
 		}
 		break;
 	case 'logout'://执行退出
-		unset($_SESSION['adminuser']);//移除登录信息
+		unset($_SESSION['admin']);//移除登录信息
 		header("Location:login.php");
 		break;
 	
