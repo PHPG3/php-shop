@@ -305,19 +305,33 @@ a{
 								<br>
 								<div style="border-top:1px #ccc solid;width: 650px;position: absolute;margin-top: 90px;margin-left: 20px;float: left;"></div>
 								<div style="position: absolute;margin-top: 100px;font-size: 14px;color: #686868;float: left;">
-									<span style="margin-left: 20px;">待付款</span>
-									<font style="color: #CF2D27;">0</font>
+									<span style="margin-left: 20px;">新订单</span>
+									<?php
+										require("../public/config.php");
+										require("../public/Page.class.php");
+										require("../public/Model.class.php");
+										$mod=new Model("orders");
+										$sql="select * from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."' and o.status=0";
+										$num1 = count($mod->all($sql));
+										$sql="select * from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."' and o.status=1";
+										$num2 = count($mod->all($sql));
+										$sql="select * from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."' and o.status=2";
+										$num3 = count($mod->all($sql));
+										$sql="select * from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."' and o.status=3";
+										$num4 = count($mod->all($sql));
+									?>
+									<font style="color: #CF2D27;"><?php echo $num1; ?></font>
 									<span style="margin-left: 40px;margin-right: 40px;">|</span>
-									<span >待发货</span>
-									<font style="color: #CF2D27;">0</font>
+									<span >已发货</span>
+									<font style="color: #CF2D27;"><?php echo $num2; ?></font>
 									<span style="margin-left: 40px;margin-right: 40px;">|</span>
-									<span>待收货</span>
-									<font style="color: #CF2D27;">0</font>
+									<span>已收货</span>
+									<font style="color: #CF2D27;"><?php echo $num3; ?></font>
 									<span style="margin-left: 40px;margin-right: 40px;">|</span>
-									<span>待评价</span>
-									<font style="color: #CF2D27;">0</font>
-									<span style="margin-left: 40px;margin-right: 40px;">|</span>
-									<span>退款</span>
+									<span>待发货</span>
+									<font style="color: #CF2D27;"><?php echo $num4; ?></font>
+									<!-- <span style="margin-left: 40px;margin-right: 40px;">|</span> -->
+									<!-- <span>退款</span> -->
 									
 								</div>
 								</div>	
