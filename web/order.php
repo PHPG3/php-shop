@@ -306,11 +306,11 @@
 				<div class="cont-main">
 					<div class="main-wrap mt15" style="border: 0px;">
 						      <ul class="sui-nav nav-tabs" style="margin-top:0px;width: 1000px;margin-left: 30px;">
-								  <li   style="margin-left: -5px;"><a href="#profile" data-toggle="tab">所有订单<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
-								  <li class="active"><a href="#profile" data-toggle="tab">待付款<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
-								   <li class="active"><a href="#profile" data-toggle="tab">待发货<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
-								    <li class="active"><a href="#profile" data-toggle="tab">待发货1<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
-								    <li class="active"><a href="#profile" data-toggle="tab">待评价<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
+								  <li   style="margin-left: -5px;"><a href="order-status.php?status=0" data-toggle="tab">所有订单<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
+								  <li class="active"><a href="order-status.php?status=1" data-toggle="tab">新订单<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
+								  <li class="active"><a href="order-status.php?status=2" data-toggle="tab">已发货<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
+								  <li class="active"><a href="order-status.php?status=3" data-toggle="tab">已收货<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
+								  <li class="active"><a href="order-status.php?status=4" data-toggle="tab">待发货<span style="margin-left: 20px;color: #ccc;">|</span></a></li>
 								</ul>
 							<div class="profile-info">
 								<div class="control-group clearfix " style="width: 1020px;margin-bottom: 0px;">
@@ -360,18 +360,31 @@
 							require("../public/config.php");
 							require("../public/Page.class.php");
 							require("../public/Model.class.php");
+
 							$total=0;
 							
 							$mod=new Model("orders");
-							$state = array("0"=>"新订单","1"=>"已发货","2"=>"已收货","3"=>"无效订单");			
+							$state = array("0"=>"新订单","1"=>"已发货","2"=>"已收货","3"=>"待发货");			
 							if(!empty($_GET['totle'])){
 						             $mod->where("id like '%{$_GET['totle']}%'");
 						       	}
 						          	$page = new Page($mod->total(),4);
 						          	$res = $mod->findAll();
-							
-							$sql="select d.name,o.address,o.linkman,o.total,o.uid,o.status,d.orderid,d.num,o.addtime from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."'";
-
+							if($_GET['status']==0){
+								$sql="select d.name,o.address,o.linkman,o.total,o.uid,o.status,d.orderid,d.num,o.addtime from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."'";
+							}
+							else if($_GET['status']==1){
+								$sql="select d.name,o.address,o.linkman,o.total,o.uid,o.status,d.orderid,d.num,o.addtime from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."' and o.status=0";
+							}
+							else if($_GET['status']==2){
+								$sql="select d.name,o.address,o.linkman,o.total,o.uid,o.status,d.orderid,d.num,o.addtime from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."' and o.status=1";
+							}
+							else if($_GET['status']==3){
+								$sql="select d.name,o.address,o.linkman,o.total,o.uid,o.status,d.orderid,d.num,o.addtime from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."' and o.status=2";
+							}
+							else if($_GET['status']==4){
+								$sql="select d.name,o.address,o.linkman,o.total,o.uid,o.status,d.orderid,d.num,o.addtime from orders o,detail d where o.id=d.orderid and o.uid='".$_SESSION['adminuser']['id']."' and o.status=3";
+							}
 							$liss=$mod->all($sql);
 							// var_dump($liss);die();
 							
