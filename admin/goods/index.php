@@ -74,7 +74,7 @@
 						$mod->where("id like'%{$_GET['totle']}%'");
 					}
 					$page = new Page($mod->total(),4);
-					 $sql = "select g.*,t.name from goods g,type t where g.typeid=t.id ";
+					$sql = "select g.*,t.name from goods g,type t where g.typeid=t.id ";
 					$list = $mod->limit($page->limit())->all($sql);
 
 

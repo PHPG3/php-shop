@@ -33,7 +33,7 @@
 							<input type="radio" name="status" value="0" <?php echo ($row['status']=='0')?"checked":""; ?>>新订单
                         	<input type="radio" name="status" value="1" <?php echo ($row['status']=='1')?"checked":""; ?>>已发货
                         	<input type="radio" name="status" value="2" <?php echo ($row['status']=='2')?"checked":""; ?>>已收货
-                        	<input type="radio" name="status" value="2" <?php echo ($row['status']=='3')?"checked":""; ?>>无效订单
+                        	<input type="radio" name="status" value="2" <?php echo ($row['status']=='3')?"checked":""; ?>>待发货
 
 			            </td>
 					</tr>
