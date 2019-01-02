@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>友情链接</title>
 	<style type="text/css">
+        <style type="text/css">
 	/*总边框样式*/
 	.table{
 		font-size:14px;
@@ -32,18 +33,64 @@
 	}
 	/*链接*/
 	a{
-		color: blue;
+		color: #4dbf00;
 		text-decoration:none;
 	}
-
+        .submitButton{
+            line-height:46px;
+            height:46px;
+            width:154px;
+            color:#ffffff;
+            background-color:#ededed;
+            font-size:20px;
+            font-weight:bold;
+            font-family:Arial;
+            background:-webkit-gradient(linear, left top, left bottom, color-start(0.05, #599bb3), color-stop(1, #408c99));
+            background:-moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+            background:-o-linear-gradient(top, #599bb3 5%, #408c99 100%);
+            background:-ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
+            background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+            background:-webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);
+            border:0px solid #dcdcdc;
+            -webkit-border-top-left-radius:8px;
+            -moz-border-radius-topleft:8px;
+            border-top-left-radius:8px;
+            -webkit-border-top-right-radius:8px;
+            -moz-border-radius-topright:8px;
+            border-top-right-radius:8px;
+            -webkit-border-bottom-left-radius:8px;
+            -moz-border-radius-bottomleft:8px;
+            border-bottom-left-radius:8px;
+            -webkit-border-bottom-right-radius:8px;
+            -moz-border-radius-bottomright:8px;
+            border-bottom-right-radius:8px;
+            -moz-box-shadow:0px 10px 14px -7px #276873;
+            -webkit-box-shadow:0px 10px 14px -7px #276873;
+            box-shadow:0px 10px 14px -7px #276873;
+            text-align:center;
+            display:inline-block;
+            text-decoration:none;
+        }
+        .submitButton:hover {
+            background-color:#f5f5f5;
+            background:-webkit-gradient(linear, left top, left bottom, color-start(0.05, #408c99), color-stop(1, #599bb3));
+            background:-moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
+            background:-o-linear-gradient(top, #408c99 5%, #599bb3 100%);
+            background:-ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
+            background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+            background:-webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
+        }
 	</style>
 </head>
 <body>
     <form  action="add.php" method="post">
         <table>
-            <input type="submit" value="添加友情链接">
+            <input class="submitButton" type="submit" value="添加友情链接">
         </table>
     </form>
+    <br>
 	<center>
 		<table class="table" width="100%">
 			<tr>
