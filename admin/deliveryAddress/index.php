@@ -32,10 +32,73 @@
 	}
 	/*链接*/
 	a{
-		color: blue;
+		color: #4dbf00;
 		text-decoration:none;
 	}
-
+    .submitButton{
+        line-height:46px;
+        height:46px;
+        width:154px;
+        color:#ffffff;
+        background-color:#ededed;
+        font-size:20px;
+        font-weight:bold;
+        font-family:Arial;
+        background:-webkit-gradient(linear, left top, left bottom, color-start(0.05, #599bb3), color-stop(1, #408c99));
+        background:-moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+        background:-o-linear-gradient(top, #599bb3 5%, #408c99 100%);
+        background:-ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
+        background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+        background:-webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);
+        border:0px solid #dcdcdc;
+        -webkit-border-top-left-radius:8px;
+        -moz-border-radius-topleft:8px;
+        border-top-left-radius:8px;
+        -webkit-border-top-right-radius:8px;
+        -moz-border-radius-topright:8px;
+        border-top-right-radius:8px;
+        -webkit-border-bottom-left-radius:8px;
+        -moz-border-radius-bottomleft:8px;
+        border-bottom-left-radius:8px;
+        -webkit-border-bottom-right-radius:8px;
+        -moz-border-radius-bottomright:8px;
+        border-bottom-right-radius:8px;
+        -moz-box-shadow:0px 10px 14px -7px #276873;
+        -webkit-box-shadow:0px 10px 14px -7px #276873;
+        box-shadow:0px 10px 14px -7px #276873;
+        text-align:center;
+        display:inline-block;
+        text-decoration:none;
+    }
+    .submitButton:hover {
+        background-color:#f5f5f5;
+        background:-webkit-gradient(linear, left top, left bottom, color-start(0.05, #408c99), color-stop(1, #599bb3));
+        background:-moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
+        background:-o-linear-gradient(top, #408c99 5%, #599bb3 100%);
+        background:-ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
+        background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+        background:-webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
+    }
+    input{
+        border: 1px solid #ccc;
+        padding: 2px 0px;
+        border-radius: 3px;
+        height: 25px;
+        padding-left:5px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+    }
+    input:focus{
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    }
 	</style>
 </head>
 <body>
@@ -43,9 +106,10 @@
         <form name="searchOrder" action="index.php" method="post">
             <table>
                 <input name="userid" type="text" placeholder="请输入会员id">
-                <input type="submit" value="查找">
+                <input class="submitButton" type="submit" value="查找">
             </table>
         </form>
+        <br>
 		<table class="table" width="100%">
 			<tr>
 				<th>订单ID</th>
